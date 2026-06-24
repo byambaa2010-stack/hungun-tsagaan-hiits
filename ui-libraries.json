@@ -1,0 +1,6 @@
+{
+  "motion": ["framer-motion", "react-intersection-observer"],
+  "scroll": ["lenis"],
+  "utilities": ["clsx", "tailwind-merge", "lucide-react", "next-themes"],
+  "selected": ["framer-motion", "lenis", "react-intersection-observer", "clsx", "tailwind-merge", "lucide-react", "next-themes"]
+}

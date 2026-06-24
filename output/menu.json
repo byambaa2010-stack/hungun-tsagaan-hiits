@@ -1,0 +1,14 @@
+[
+  { "label": "Нүүр", "url": "/", "order": 1, "kind": "header" },
+  { "label": "Бидний тухай", "url": "/about", "order": 2, "kind": "header" },
+  { "label": "Үйлчилгээ", "url": "/services", "order": 3, "kind": "header" },
+  { "label": "Галерей", "url": "/gallery", "order": 4, "kind": "header" },
+  { "label": "Мэдээ", "url": "/blog", "order": 5, "kind": "header" },
+  { "label": "Холбоо барих", "url": "/contact", "order": 6, "kind": "header" },
+  { "label": "Нүүр", "url": "/", "order": 1, "kind": "footer" },
+  { "label": "Бидний тухай", "url": "/about", "order": 2, "kind": "footer" },
+  { "label": "Үйлчилгээ", "url": "/services", "order": 3, "kind": "footer" },
+  { "label": "Галерей", "url": "/gallery", "order": 4, "kind": "footer" },
+  { "label": "Мэдээ", "url": "/blog", "order": 5, "kind": "footer" },
+  { "label": "Холбоо барих", "url": "/contact", "order": 6, "kind": "footer" }
+]

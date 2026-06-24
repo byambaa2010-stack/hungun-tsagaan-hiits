@@ -5,7 +5,7 @@ import { Link } from "@/i18n/routing";
 import Image from "@/components/common/Image";
 import { Calendar, ArrowRight } from "lucide-react";
 
-export const revalidate = 60;
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Мэдээ | GER GROUP",

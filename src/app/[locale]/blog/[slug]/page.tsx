@@ -7,22 +7,10 @@ import { Calendar, ArrowLeft } from "lucide-react";
 import { Link } from "@/i18n/routing";
 import Image from "@/components/common/Image";
 
-export const revalidate = 60;
+export const dynamic = "force-dynamic";
 
 export async function generateStaticParams() {
-  const client = getStaticApolloClient();
-  try {
-    const { data } = await client.query<CpPostsData>({
-      query: CP_POSTS,
-      variables: { language: routing.defaultLocale, status: "published", limit: 100 },
-      context: { fetchOptions: { next: { revalidate: 60 } } },
-    });
-    return (data?.cpPosts ?? [])
-      .filter((p: Post) => p.slug)
-      .map((p: Post) => ({ slug: p.slug }));
-  } catch {
-    return [];
-  }
+  return [];
 }
 
 export async function generateMetadata({

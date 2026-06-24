@@ -4,22 +4,10 @@ import { getStaticApolloClient } from "@/lib/apollo/server-client";
 import { CP_PAGES, Page, CpPagesData } from "@/graphql/cms/queries/page";
 import { routing } from "@/i18n/routing";
 
-export const revalidate = 60;
+export const dynamic = "force-dynamic";
 
 export async function generateStaticParams() {
-  const client = getStaticApolloClient();
-  try {
-    const { data } = await client.query<CpPagesData>({
-      query: CP_PAGES,
-      variables: { language: routing.defaultLocale },
-      context: { fetchOptions: { next: { revalidate: 60 } } },
-    });
-    return (data?.cpPages ?? [])
-      .filter((p: Page) => p.slug && !["gallery", "contact", "blog"].includes(p.slug))
-      .map((p: Page) => ({ slug: p.slug }));
-  } catch {
-    return [];
-  }
+  return [];
 }
 
 export async function generateMetadata({

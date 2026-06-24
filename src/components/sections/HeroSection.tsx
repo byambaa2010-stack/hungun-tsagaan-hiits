@@ -6,6 +6,7 @@ import { Link } from "@/i18n/routing";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { easeOutExpo } from "@/lib/motion";
 import { useTranslations } from "next-intl";
+import Image from "@/components/common/Image";
 
 export default function HeroSection() {
   const t = useTranslations("hero");
@@ -79,25 +80,37 @@ export default function HeroSection() {
           initial={reduced ? { opacity: 1 } : { opacity: 0, x: 24 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7, delay: 0.2, ease: easeOutExpo }}
-          className="rounded-lg border border-border bg-surface p-8 md:p-10"
+          className="space-y-6"
         >
-          <div className="mb-8 flex items-center justify-between border-b border-border pb-6">
-            <span className="font-mono text-xs font-medium uppercase tracking-[0.2em] text-muted">
-              SPEC
-            </span>
-            <span className="font-mono text-2xl font-bold text-accent">{t("specCode")}</span>
+          <div className="relative h-56 overflow-hidden rounded-lg border border-border md:h-72">
+            <Image
+              src="/images/hero-building.svg"
+              alt="Шилэн фасад"
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              priority
+            />
           </div>
+          <div className="rounded-lg border border-border bg-surface p-8 md:p-10">
+            <div className="mb-8 flex items-center justify-between border-b border-border pb-6">
+              <span className="font-mono text-xs font-medium uppercase tracking-[0.2em] text-muted">
+                SPEC
+              </span>
+              <span className="font-mono text-2xl font-bold text-accent">{t("specCode")}</span>
+            </div>
 
-          <div className="space-y-5">
-            {specs.map((spec, index) => (
-              <div
-                key={index}
-                className="flex items-center justify-between border-b border-border/50 pb-4 last:border-0 last:pb-0"
-              >
-                <span className="font-mono text-sm text-muted">{spec.label}</span>
-                <span className="font-mono text-sm font-medium text-foreground">{spec.value}</span>
-              </div>
-            ))}
+            <div className="space-y-5">
+              {specs.map((spec, index) => (
+                <div
+                  key={index}
+                  className="flex items-center justify-between border-b border-border/50 pb-4 last:border-0 last:pb-0"
+                >
+                  <span className="font-mono text-sm text-muted">{spec.label}</span>
+                  <span className="font-mono text-sm font-medium text-foreground">{spec.value}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </motion.div>
       </div>

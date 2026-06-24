@@ -12,15 +12,15 @@ import { easeOutExpo } from "@/lib/motion";
 const filters = ["all", "office", "retail", "residential", "lobby"] as const;
 
 const galleryItems = [
-  { id: "1", label: "Оффисын барилга", category: "office" },
-  { id: "2", label: "Худалдааны төв", category: "retail" },
-  { id: "3", label: "Орон сууцны хороолол", category: "residential" },
-  { id: "4", label: "Бизнес төв", category: "office" },
-  { id: "5", label: "Лобби", category: "lobby" },
-  { id: "6", label: "Зочид буудал", category: "lobby" },
-  { id: "7", label: "Оффисын барилга", category: "office" },
-  { id: "8", label: "Орон сууц", category: "residential" },
-  { id: "9", label: "Худалдааны төв", category: "retail" },
+  { id: "1", label: "Оффисын барилга", category: "office", image: "/images/gallery-1.svg" },
+  { id: "2", label: "Худалдааны төв", category: "retail", image: "/images/gallery-2.svg" },
+  { id: "3", label: "Орон сууцны хороолол", category: "residential", image: "/images/gallery-3.svg" },
+  { id: "4", label: "Бизнес төв", category: "office", image: "/images/gallery-4.svg" },
+  { id: "5", label: "Лобби", category: "lobby", image: "/images/gallery-5.svg" },
+  { id: "6", label: "Зочид буудал", category: "lobby", image: "/images/gallery-6.svg" },
+  { id: "7", label: "Оффисын барилга", category: "office", image: "/images/gallery-7.svg" },
+  { id: "8", label: "Орон сууц", category: "residential", image: "/images/gallery-8.svg" },
+  { id: "9", label: "Худалдааны төв", category: "retail", image: "/images/gallery-9.svg" },
 ];
 
 export default function GalleryPage() {
@@ -83,7 +83,7 @@ export default function GalleryPage() {
                 className="group relative h-64 overflow-hidden rounded-lg"
               >
                 <Image
-                  src=""
+                  src={item.image}
                   alt={item.label}
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"

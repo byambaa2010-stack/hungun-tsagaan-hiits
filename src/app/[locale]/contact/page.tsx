@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ContactSection from "@/components/sections/ContactSection";
+import Image from "@/components/common/Image";
 import { useTranslations } from "next-intl";
 
 export const metadata: Metadata = {
@@ -31,12 +32,13 @@ function MapSection() {
           </h2>
         </div>
         <div className="relative h-[400px] overflow-hidden rounded-lg border border-border bg-background">
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="text-center">
-              <p className="text-muted">Улаанбаатар, Монгол</p>
-              <p className="mt-1 font-mono text-xs text-subtle">Газрын зураг</p>
-            </div>
-          </div>
+          <Image
+            src="/images/map.svg"
+            alt="Манай оффисын байршил"
+            fill
+            className="object-cover"
+            sizes="(max-width: 1280px) 100vw, 1280px"
+          />
         </div>
       </div>
     </section>

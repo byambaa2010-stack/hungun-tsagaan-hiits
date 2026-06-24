@@ -12,6 +12,8 @@ export const metadata: Metadata = {
   description: "Шилэн фасад, хөнгөн цагаан хийцийн шинэ технологи, төслийн тайлан.",
 };
 
+const blogImages = ["/images/blog-1.svg", "/images/blog-2.svg", "/images/blog-3.svg"];
+
 export default async function BlogPage({
   params,
 }: {
@@ -47,14 +49,14 @@ export default async function BlogPage({
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {posts.length > 0 ? (
-              posts.map((post) => (
+              posts.map((post, index) => (
                 <article
                   key={post._id}
                   className="group flex flex-col overflow-hidden rounded-lg border border-border bg-background"
                 >
                   <div className="relative aspect-video overflow-hidden">
                     <Image
-                      src={post.thumbnail?.url}
+                      src={post.thumbnail?.url || blogImages[index % blogImages.length]}
                       alt={post.title || ""}
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-105"

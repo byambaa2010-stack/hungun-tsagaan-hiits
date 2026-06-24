@@ -10,11 +10,16 @@ import StaggerContainer from "@/components/motion/StaggerContainer";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { easeOutExpo } from "@/lib/motion";
 
+const blogImages = ["/images/blog-1.svg", "/images/blog-2.svg", "/images/blog-3.svg"];
+
 export default function BlogSection({ posts }: { posts: Post[] }) {
   const t = useTranslations("blog");
   const reduced = useReducedMotion();
 
-  const displayPosts = posts.slice(0, 3);
+  const displayPosts = posts.slice(0, 3).map((post, index) => ({
+    ...post,
+    image: post.thumbnail?.url || blogImages[index] || blogImages[0],
+  }));
 
   return (
     <section id="blog" className="bg-surface px-6 py-24 md:py-32">

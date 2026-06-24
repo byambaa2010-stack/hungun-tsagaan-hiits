@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getServerApolloClient, getStaticApolloClient } from "@/lib/apollo/server-client";
+import { getStaticApolloClient } from "@/lib/apollo/server-client";
 import { CP_POSTS, Post, CpPostsData } from "@/graphql/cms/queries/post";
 import { routing } from "@/i18n/routing";
 import { Calendar, ArrowLeft } from "lucide-react";
 import { Link } from "@/i18n/routing";
 import Image from "@/components/common/Image";
 
+export const dynamic = "force-static";
 export const revalidate = 60;
 
 export async function generateStaticParams() {
@@ -45,7 +46,7 @@ export async function generateMetadata({
 }
 
 async function fetchPost(locale: string, slug: string): Promise<Post | null> {
-  const client = await getServerApolloClient();
+  const client = getStaticApolloClient();
   try {
     const { data } = await client.query<CpPostsData>({
       query: CP_POSTS,

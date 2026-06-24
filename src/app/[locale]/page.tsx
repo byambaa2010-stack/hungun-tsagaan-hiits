@@ -1,4 +1,4 @@
-import { getServerApolloClient } from "@/lib/apollo/server-client";
+import { getStaticApolloClient } from "@/lib/apollo/server-client";
 import { CP_PAGES, Page, CpPagesData } from "@/graphql/cms/queries/page";
 import { CP_POSTS, Post, CpPostsData } from "@/graphql/cms/queries/post";
 import HeroSection from "@/components/sections/HeroSection";
@@ -9,6 +9,7 @@ import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import BlogSection from "@/components/sections/BlogSection";
 import UploadSection from "@/components/sections/UploadSection";
 
+export const dynamic = "force-static";
 export const revalidate = 60;
 
 export default async function HomePage({
@@ -17,7 +18,7 @@ export default async function HomePage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const client = await getServerApolloClient();
+  const client = getStaticApolloClient();
 
   let pages: Page[] = [];
   let posts: Post[] = [];

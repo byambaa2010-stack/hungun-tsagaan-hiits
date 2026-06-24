@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getServerApolloClient, getStaticApolloClient } from "@/lib/apollo/server-client";
+import { getStaticApolloClient } from "@/lib/apollo/server-client";
 import { CP_PAGES, Page, CpPagesData } from "@/graphql/cms/queries/page";
 import { routing } from "@/i18n/routing";
 
+export const dynamic = "force-static";
 export const revalidate = 60;
 
 export async function generateStaticParams() {
@@ -42,7 +43,7 @@ export async function generateMetadata({
 }
 
 async function fetchPage(locale: string, slug: string): Promise<Page | null> {
-  const client = await getServerApolloClient();
+  const client = getStaticApolloClient();
   try {
     const { data } = await client.query<CpPagesData>({
       query: CP_PAGES,

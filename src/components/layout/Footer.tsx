@@ -1,4 +1,4 @@
-import { getServerApolloClient } from "@/lib/apollo/server-client";
+import { getStaticApolloClient } from "@/lib/apollo/server-client";
 import { CP_MENUS, CpMenusData, MenuItem } from "@/graphql/cms/queries/menu";
 import { Link } from "@/i18n/routing";
 import { Phone, Mail, MapPin } from "lucide-react";
@@ -10,7 +10,7 @@ function getFooterItems(items: MenuItem[]): MenuItem[] {
 }
 
 export default async function Footer() {
-  const client = await getServerApolloClient();
+  const client = getStaticApolloClient();
 
   let menuItems: MenuItem[] = [];
   try {

@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
 import ApolloClientProvider from "@/lib/apollo/provider";
 import { ThemeProvider } from "@/components/theme-provider";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import messages from "../../../messages/mn.json";
 import "../globals.css";
 
 const inter = Inter({
@@ -40,7 +40,6 @@ export default async function LocaleLayout({
   params,
 }: LayoutProps<"/[locale]">) {
   const { locale } = await params;
-  const messages = await getMessages();
 
   return (
     <html

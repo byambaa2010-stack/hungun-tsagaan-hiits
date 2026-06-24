@@ -1,8 +1,7 @@
-import { getServerApolloClient } from "@/lib/apollo/server-client";
+import { getStaticApolloClient } from "@/lib/apollo/server-client";
 import { CP_MENUS, CpMenusData, MenuItem } from "@/graphql/cms/queries/menu";
 import { Link } from "@/i18n/routing";
 import { Menu, X } from "lucide-react";
-import { headers } from "next/headers";
 
 function getHeaderItems(items: MenuItem[]): MenuItem[] {
   return items
@@ -27,9 +26,8 @@ function MenuLink({ item, currentPath }: { item: MenuItem; currentPath: string }
 }
 
 export default async function Header() {
-  const client = await getServerApolloClient();
-  const headerList = await headers();
-  const currentPath = headerList.get("x-invoke-path") || "/";
+  const client = getStaticApolloClient();
+  const currentPath = "/";
 
   let menuItems: MenuItem[] = [];
   try {

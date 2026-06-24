@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import { getServerApolloClient } from "@/lib/apollo/server-client";
+import { getStaticApolloClient } from "@/lib/apollo/server-client";
 import { CP_POSTS, Post, CpPostsData } from "@/graphql/cms/queries/post";
 import { Link } from "@/i18n/routing";
 import Image from "@/components/common/Image";
 import { Calendar, ArrowRight } from "lucide-react";
 
+export const dynamic = "force-static";
 export const revalidate = 60;
 
 export const metadata: Metadata = {
@@ -20,7 +21,7 @@ export default async function BlogPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const client = await getServerApolloClient();
+  const client = getStaticApolloClient();
 
   let posts: Post[] = [];
   try {

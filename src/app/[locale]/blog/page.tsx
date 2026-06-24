@@ -5,7 +5,6 @@ import { Link } from "@/i18n/routing";
 import Image from "@/components/common/Image";
 import { Calendar, ArrowRight } from "lucide-react";
 
-export const dynamic = "force-static";
 export const revalidate = 60;
 
 export const metadata: Metadata = {

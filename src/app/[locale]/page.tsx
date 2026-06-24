@@ -9,7 +9,6 @@ import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import BlogSection from "@/components/sections/BlogSection";
 import UploadSection from "@/components/sections/UploadSection";
 
-export const dynamic = "force-static";
 export const revalidate = 60;
 
 export default async function HomePage({

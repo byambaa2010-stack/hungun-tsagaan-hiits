@@ -7,7 +7,6 @@ import { Calendar, ArrowLeft } from "lucide-react";
 import { Link } from "@/i18n/routing";
 import Image from "@/components/common/Image";
 
-export const dynamic = "force-static";
 export const revalidate = 60;
 
 export async function generateStaticParams() {

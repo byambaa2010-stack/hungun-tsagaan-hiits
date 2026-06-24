@@ -7,9 +7,13 @@ function createApolloClient(token?: string) {
       uri:
         process.env.GRAPHQL_URL ??
         process.env.NEXT_PUBLIC_GRAPHQL_URL ??
+        process.env.NEXT_PUBLIC_ERXES_ENDPOINT ??
         "/graphql",
       headers: {
-        "x-app-token": process.env.ERXES_APP_TOKEN ?? "",
+        "x-app-token":
+          process.env.ERXES_APP_TOKEN ??
+          process.env.NEXT_PUBLIC_ERXES_APP_TOKEN ??
+          "",
         ...(token ? { authorization: `Bearer ${token}` } : {}),
       },
       fetchOptions: { cache: "no-store" },

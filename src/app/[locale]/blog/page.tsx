@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   description: "Шилэн фасад, хөнгөн цагаан хийцийн шинэ технологи, төслийн тайлан.",
 };
 
-const blogImages = ["/images/blog-1.svg", "/images/blog-2.svg", "/images/blog-3.svg"];
+const blogImages = ["/images/blog-1.jpg", "/images/blog-2.jpg", "/images/blog-3.jpg"];
 
 export default async function BlogPage({
   params,

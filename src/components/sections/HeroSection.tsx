@@ -95,7 +95,7 @@ export default function HeroSection() {
           <div className="rounded-lg border border-border bg-surface p-8 md:p-10">
             <div className="mb-8 flex items-center justify-between border-b border-border pb-6">
               <span className="font-mono text-xs font-medium uppercase tracking-[0.2em] text-muted">
-                SPEC
+                {t("specLabel")}
               </span>
               <span className="font-mono text-2xl font-bold text-accent">{t("specCode")}</span>
             </div>

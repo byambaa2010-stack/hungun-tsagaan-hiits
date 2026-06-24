@@ -10,10 +10,10 @@ import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { easeOutExpo } from "@/lib/motion";
 
 const services = [
-  { key: "facade", icon: Layers, image: "/images/service-facade.svg" },
-  { key: "aluminum", icon: Box, image: "/images/service-aluminum.svg" },
-  { key: "lowe", icon: Ruler, image: "/images/service-glass.svg" },
-  { key: "installation", icon: Wrench, image: "/images/service-install.svg" },
+  { key: "facade", icon: Layers, image: "/images/service-facade.jpg" },
+  { key: "aluminum", icon: Box, image: "/images/service-aluminum.jpg" },
+  { key: "lowe", icon: Ruler, image: "/images/service-glass.jpg" },
+  { key: "installation", icon: Wrench, image: "/images/service-install.jpg" },
 ] as const;
 
 export default function ServicesSection() {

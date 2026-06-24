@@ -11,9 +11,9 @@ import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { easeOutExpo } from "@/lib/motion";
 
 const galleryItems = [
-  { id: "1", label: "Оффисын барилга", image: "/images/gallery-1.svg" },
-  { id: "2", label: "Худалдааны төв", image: "/images/gallery-2.svg" },
-  { id: "3", label: "Орон сууц", image: "/images/gallery-3.svg" },
+  { id: "1", label: "Оффисын барилга", image: "/images/gallery-1.jpg" },
+  { id: "2", label: "Худалдааны төв", image: "/images/gallery-2.jpg" },
+  { id: "3", label: "Орон сууц", image: "/images/gallery-3.jpg" },
 ];
 
 export default function GallerySection() {

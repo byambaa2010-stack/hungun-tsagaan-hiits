@@ -84,7 +84,7 @@ export default function HeroSection() {
         >
           <div className="relative h-56 overflow-hidden rounded-lg border border-border md:h-72">
             <Image
-              src="/images/hero-building.svg"
+              src="/images/hero-building.jpg"
               alt="Шилэн фасад"
               fill
               className="object-cover"

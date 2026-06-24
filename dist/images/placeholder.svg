@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600" fill="none">
-  <rect width="800" height="600" fill="#1A1A22"/>
-  <rect x="320" y="220" width="160" height="120" rx="8" stroke="#27272A" stroke-width="2" fill="none"/>
-  <circle cx="360" cy="260" r="16" stroke="#27272A" stroke-width="2" fill="none"/>
-  <path d="M340 320 L380 280 L420 310 L460 260 L480 280 L480 340 L340 340 Z" fill="#27272A"/>
-  <text x="400" y="390" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#71717A">Зураг</text>
-</svg>

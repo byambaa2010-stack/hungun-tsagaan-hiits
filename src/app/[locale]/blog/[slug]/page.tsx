@@ -11,24 +11,19 @@ export const dynamic = "force-static";
 export const revalidate = 60;
 
 export async function generateStaticParams() {
-  const results = await Promise.all(
-    routing.locales.map(async (locale) => {
-      const client = getStaticApolloClient();
-      try {
-        const { data } = await client.query<CpPostsData>({
-          query: CP_POSTS,
-          variables: { language: locale, status: "published", limit: 100 },
-          context: { fetchOptions: { next: { revalidate: 60 } } },
-        });
-        return (data?.cpPosts ?? [])
-          .filter((p: Post) => p.slug)
-          .map((p: Post) => ({ locale, slug: p.slug }));
-      } catch {
-        return [];
-      }
-    })
-  );
-  return results.flat();
+  const client = getStaticApolloClient();
+  try {
+    const { data } = await client.query<CpPostsData>({
+      query: CP_POSTS,
+      variables: { language: routing.defaultLocale, status: "published", limit: 100 },
+      context: { fetchOptions: { next: { revalidate: 60 } } },
+    });
+    return (data?.cpPosts ?? [])
+      .filter((p: Post) => p.slug)
+      .map((p: Post) => ({ slug: p.slug }));
+  } catch {
+    return [];
+  }
 }
 
 export async function generateMetadata({

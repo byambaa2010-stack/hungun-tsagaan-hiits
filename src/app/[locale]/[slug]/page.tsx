@@ -8,24 +8,19 @@ export const dynamic = "force-static";
 export const revalidate = 60;
 
 export async function generateStaticParams() {
-  const results = await Promise.all(
-    routing.locales.map(async (locale) => {
-      const client = getStaticApolloClient();
-      try {
-        const { data } = await client.query<CpPagesData>({
-          query: CP_PAGES,
-          variables: { language: locale },
-          context: { fetchOptions: { next: { revalidate: 60 } } },
-        });
-        return (data?.cpPages ?? [])
-          .filter((p: Page) => p.slug && !["gallery", "contact", "blog"].includes(p.slug))
-          .map((p: Page) => ({ locale, slug: p.slug }));
-      } catch {
-        return [];
-      }
-    })
-  );
-  return results.flat();
+  const client = getStaticApolloClient();
+  try {
+    const { data } = await client.query<CpPagesData>({
+      query: CP_PAGES,
+      variables: { language: routing.defaultLocale },
+      context: { fetchOptions: { next: { revalidate: 60 } } },
+    });
+    return (data?.cpPages ?? [])
+      .filter((p: Page) => p.slug && !["gallery", "contact", "blog"].includes(p.slug))
+      .map((p: Page) => ({ slug: p.slug }));
+  } catch {
+    return [];
+  }
 }
 
 export async function generateMetadata({

@@ -26,7 +26,7 @@ export default function AboutSection() {
           <div className="relative overflow-hidden rounded-xl border border-border">
             <div className="aspect-[4/3] w-full">
               <Image
-                src="/images/team.jpg"
+                src="/images/about-team.jpg"
                 alt={t("teamAlt")}
                 fill
                 className="object-cover"

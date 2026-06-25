@@ -42,6 +42,28 @@ body {
   font-feature-settings: "rlig" 1, "calt" 1;
 }
 
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image: url("/images/gallery-6.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  opacity: 0.12;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: var(--background);
+  opacity: 0.82;
+  mix-blend-mode: multiply;
+}
+
 ::selection {
   background: rgba(37, 99, 235, 0.3);
 }

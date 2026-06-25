@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
-import { Layers, Box, Ruler, Wrench } from "lucide-react";
+import { Layers, Box, Ruler, Wrench, LayoutGrid, Columns } from "lucide-react";
 import Image from "@/components/common/Image";
 import FadeIn from "@/components/motion/FadeIn";
 import StaggerContainer from "@/components/motion/StaggerContainer";
@@ -11,6 +11,8 @@ import { easeOutExpo } from "@/lib/motion";
 
 const services = [
   { key: "facade", icon: Layers, image: "/images/service-facade.jpg" },
+  { key: "unitized", icon: LayoutGrid, image: "/images/service-unitized.jpg" },
+  { key: "stick", icon: Columns, image: "/images/service-stick.jpg" },
   { key: "aluminum", icon: Box, image: "/images/service-aluminum.jpg" },
   { key: "lowe", icon: Ruler, image: "/images/service-glass.jpg" },
   { key: "installation", icon: Wrench, image: "/images/service-install.jpg" },
@@ -32,7 +34,7 @@ export default function ServicesSection() {
           </h2>
         </FadeIn>
 
-        <StaggerContainer className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <StaggerContainer className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {services.map((service) => {
             const Icon = service.icon;
             return (

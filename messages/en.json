@@ -34,8 +34,9 @@
     "eyebrow": "БИДНИЙ ТУХАЙ",
     "title": "Стандарт, чанар, угсралт — гурван тэгшитгэл",
     "description": "GER Group 2013 онд үүсгэн байгуулагдсан бөгөөд Монголын барилгын салбарт шилэн фасад, хөнгөн цагаан хийцний чиглэлээр мэргэшсэн инженерийн баг юм. Бид Хайянг Шунда, Хуажиан системийг Монголын барилгад нэвтрүүлж, Window 6.3 тооцоо, JGJ151/GB/T 5237 стандартад нийцүүлэн ажилладаг.",
-    "structureLabel": "БҮТЭЦ",
-    "structureItems": "6063-T5/T6\nPA66 GF25 тусгаарлагч\nEPDM уян хатан\nСиликон герметик",
+    "teamAlt": "GER GROUP team",
+    "structureLabel": "STRUCTURE",
+    "structureItems": "6063-T5/T6\nPA66 GF25 thermal break\nEPDM rubber seal\nSilicone sealant",
     "stats": {
       "years": "Жилийн туршлага",
       "projects": "Гүйцэтгэсэн төсөл",

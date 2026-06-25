@@ -1,7 +1,7 @@
 import { getStaticApolloClient } from "@/lib/apollo/server-client";
 import { CP_MENUS, CpMenusData, MenuItem } from "@/graphql/cms/queries/menu";
 import { Link } from "@/i18n/routing";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Leaf } from "lucide-react";
 
 function getHeaderItems(items: MenuItem[]): MenuItem[] {
   return items
@@ -58,6 +58,9 @@ export default async function Header() {
     <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
         <Link href="/" className="flex items-center gap-2">
+          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-accent/10">
+            <Leaf className="h-5 w-5 text-green-400" />
+          </div>
           <span className="text-lg font-bold tracking-[0.1em] text-foreground">
             GER GROUP
           </span>

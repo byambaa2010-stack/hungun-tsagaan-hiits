@@ -9,15 +9,13 @@ import StaggerContainer from "@/components/motion/StaggerContainer";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { easeOutExpo } from "@/lib/motion";
 
-const filters = ["all", "office", "retail", "residential", "lobby"] as const;
+const filters = ["all", "office", "retail", "residential"] as const;
 
 const galleryItems = [
   { id: "1", label: "Оффисын барилга", category: "office", image: "/images/gallery-1.jpg" },
   { id: "2", label: "Худалдааны төв", category: "retail", image: "/images/gallery-2.jpg" },
   { id: "3", label: "Орон сууцны хороолол", category: "residential", image: "/images/gallery-3.jpg" },
   { id: "4", label: "Бизнес төв", category: "office", image: "/images/gallery-4.jpg" },
-  { id: "5", label: "Лобби", category: "lobby", image: "/images/gallery-5.jpg" },
-  { id: "6", label: "Зочид буудал", category: "lobby", image: "/images/gallery-6.jpg" },
   { id: "7", label: "Оффисын барилга", category: "office", image: "/images/gallery-7.jpg" },
   { id: "8", label: "Орон сууц", category: "residential", image: "/images/gallery-8.jpg" },
   { id: "9", label: "Худалдааны төв", category: "retail", image: "/images/gallery-9.jpg" },

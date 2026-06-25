@@ -8,6 +8,7 @@ const PLACEHOLDER = "/images/placeholder.svg";
 function getFileUrl(url: string): string {
   if (!url) return "";
   if (url.startsWith("http")) return url;
+  if (url.startsWith("/images/")) return url;
   const endpoint = process.env.NEXT_PUBLIC_ERXES_ENDPOINT || "";
   const apiDomain = endpoint.replace(/\/gateway\/graphql$/, "");
   return apiDomain ? `${apiDomain}/read-file?key=${url}` : url;

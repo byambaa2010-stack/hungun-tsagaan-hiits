@@ -101,7 +101,7 @@ export default async function Footer() {
               </li>
               <li className="flex items-center gap-3 text-sm text-muted">
                 <Phone className="h-4 w-4 shrink-0 text-accent" />
-                <a href="tel:+97600000000" className="hover:text-foreground">+976 0000 0000</a>
+                <a href="tel:+97670009559" className="hover:text-foreground">+976 7000 9559</a>
               </li>
               <li className="flex items-center gap-3 text-sm text-muted">
                 <Mail className="h-4 w-4 shrink-0 text-accent" />

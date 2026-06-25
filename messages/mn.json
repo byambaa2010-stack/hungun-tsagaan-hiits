@@ -46,6 +46,12 @@
   "services": {
     "eyebrow": "ҮЙЛЧИЛГЭЭ",
     "title": "Бүтээцээс угсралт хүртэл",
+    "filters": {
+      "all": "Бүгд",
+      "facade": "Фасад",
+      "aluminum": "Хөнгөн цагаан",
+      "glass": "Шил"
+    },
     "items": {
       "facade": {
         "num": "01",

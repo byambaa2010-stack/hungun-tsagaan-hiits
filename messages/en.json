@@ -44,8 +44,14 @@
     }
   },
   "services": {
-    "eyebrow": "ҮЙЛЧИЛГЭЭ",
-    "title": "Бүтээцээс угсралт хүртэл",
+    "eyebrow": "SERVICES",
+    "title": "From structure to installation",
+    "filters": {
+      "all": "All",
+      "facade": "Facade",
+      "aluminum": "Aluminum",
+      "glass": "Glass"
+    },
     "items": {
       "facade": {
         "num": "01",

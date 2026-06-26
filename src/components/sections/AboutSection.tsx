@@ -30,8 +30,8 @@ export default function AboutSection() {
   return (
     <section id="about" className="relative overflow-hidden">
       <div className="absolute inset-0">
-        <Image
-          src="/images/team.jpg"
+          <Image
+            src="/images/gallery-8.jpg"
           alt={t("teamAlt")}
           fill
           className="object-cover"

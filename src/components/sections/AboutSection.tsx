@@ -1,7 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useTranslations } from "next-intl";
+import { useRef } from "react";
 import Image from "@/components/common/Image";
 import FadeIn from "@/components/motion/FadeIn";
 import StaggerContainer from "@/components/motion/StaggerContainer";
@@ -26,9 +27,26 @@ const highlights = [
 export default function AboutSection() {
   const t = useTranslations("about");
   const reduced = useReducedMotion();
+  const sectionRef = useRef<HTMLElement>(null);
+  const imageRef = useRef<HTMLDivElement>(null);
 
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+
+  const imageY = useTransform(
+    scrollYProgress,
+    [0, 1],
+    reduced ? ["0%", "0%"] : ["-8%", "8%"]
+  );
+  const imageScale = useTransform(
+    scrollYProgress,
+    [0, 0.5, 1],
+    reduced ? [1, 1, 1] : [1.08, 1, 1.08]
+  );
   return (
-    <section id="about" className="relative overflow-hidden">
+    <section id="about" ref={sectionRef} className="relative overflow-hidden">
       <div className="absolute inset-0">
           <Image
             src="/images/gallery-8.jpg"
@@ -47,14 +65,20 @@ export default function AboutSection() {
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
             <FadeIn className="order-2 lg:order-1">
               <div className="relative overflow-hidden rounded-2xl border border-border shadow-2xl shadow-black/20">
-                <div className="aspect-[4/3] w-full">
-                  <Image
-                    src="/images/about-team.jpg"
-                    alt={t("teamAlt")}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                  />
+                <div className="aspect-[4/3] w-full overflow-hidden">
+                  <motion.div
+                    ref={imageRef}
+                    style={{ y: imageY, scale: imageScale }}
+                    className="relative h-[116%] w-full"
+                  >
+                    <Image
+                      src="/images/about-team.jpg"
+                      alt={t("teamAlt")}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                    />
+                  </motion.div>
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
                 <div className="absolute bottom-0 left-0 p-8">

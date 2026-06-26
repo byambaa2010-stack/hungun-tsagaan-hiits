@@ -37,6 +37,12 @@
     "teamAlt": "GER GROUP баг",
     "structureLabel": "БҮТЭЦ",
     "structureItems": "6063-T5/T6\nPA66 GF25 тусгаарлагч\nEPDM уян хатан\nСиликон герметик",
+    "highlights": {
+      "quality": { "title": "Чанарын стандарт", "description": "JGJ151, GB/T 5237 стандартад нийцсэн материал." },
+      "team": { "title": "Мэргэшсэн баг", "description": "Инженер, угсралтын мэргэжилтнүүд нэгдсэн хүч." },
+      "standard": { "title": "Техникийн хяналт", "description": "Window 6.3 тооцоо, дэлгэрэнгүй тайлан." },
+      "safety": { "title": "Аюулгүй ажиллагаа", "description": "Талбайн бүрэн даатгал, чанарын баталгаа." }
+    },
     "stats": {
       "years": "Жилийн туршлага",
       "projects": "Гүйцэтгэсэн төсөл",

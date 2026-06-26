@@ -12,7 +12,7 @@ export async function generateStaticParams() {
       query: CP_PAGES,
       variables: { language: "mn" },
     });
-    const pages = data?.cpPages ?? [];
+    const pages: Page[] = data?.cpPages ?? [];
     return pages
       .filter((p): p is Page & { slug: string } =>
         Boolean(p.slug && !RESERVED_SLUGS.has(p.slug))

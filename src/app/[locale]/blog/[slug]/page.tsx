@@ -13,7 +13,7 @@ export async function generateStaticParams() {
       query: CP_POSTS,
       variables: { language: "mn", status: "published", limit: 100 },
     });
-    const posts = data?.cpPosts ?? [];
+    const posts: Post[] = data?.cpPosts ?? [];
     return posts
       .filter((p): p is Post & { slug: string } => Boolean(p.slug))
       .map((p) => ({ locale: "mn", slug: p.slug }));

@@ -4,6 +4,12 @@ const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: "export",
+  distDir: "dist",
+  basePath:
+    process.env.NODE_ENV === "production"
+      ? process.env.EXPORT_BASE_PATH ?? "/hungun-tsagaan-hiits"
+      : "",
   images: {
     unoptimized: true,
   },

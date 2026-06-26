@@ -9,8 +9,6 @@ import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import BlogSection from "@/components/sections/BlogSection";
 import UploadSection from "@/components/sections/UploadSection";
 
-export const dynamic = "force-dynamic";
-
 export default async function HomePage({
   params,
 }: {

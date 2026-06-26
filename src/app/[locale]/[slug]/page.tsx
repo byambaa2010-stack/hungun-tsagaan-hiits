@@ -2,12 +2,25 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getStaticApolloClient } from "@/lib/apollo/server-client";
 import { CP_PAGES, Page, CpPagesData } from "@/graphql/cms/queries/page";
-import { routing } from "@/i18n/routing";
 
-export const dynamic = "force-dynamic";
+const RESERVED_SLUGS = new Set(["gallery", "contact", "blog"]);
 
 export async function generateStaticParams() {
-  return [];
+  const client = getStaticApolloClient();
+  try {
+    const { data } = await client.query<CpPagesData>({
+      query: CP_PAGES,
+      variables: { language: "mn" },
+    });
+    const pages = data?.cpPages ?? [];
+    return pages
+      .filter((p): p is Page & { slug: string } =>
+        Boolean(p.slug && !RESERVED_SLUGS.has(p.slug))
+      )
+      .map((p) => ({ locale: "mn", slug: p.slug }));
+  } catch {
+    return [];
+  }
 }
 
 export async function generateMetadata({

@@ -2,15 +2,24 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getStaticApolloClient } from "@/lib/apollo/server-client";
 import { CP_POSTS, Post, CpPostsData } from "@/graphql/cms/queries/post";
-import { routing } from "@/i18n/routing";
 import { Calendar, ArrowLeft } from "lucide-react";
 import { Link } from "@/i18n/routing";
 import Image from "@/components/common/Image";
 
-export const dynamic = "force-dynamic";
-
 export async function generateStaticParams() {
-  return [];
+  const client = getStaticApolloClient();
+  try {
+    const { data } = await client.query<CpPostsData>({
+      query: CP_POSTS,
+      variables: { language: "mn", status: "published", limit: 100 },
+    });
+    const posts = data?.cpPosts ?? [];
+    return posts
+      .filter((p): p is Post & { slug: string } => Boolean(p.slug))
+      .map((p) => ({ locale: "mn", slug: p.slug }));
+  } catch {
+    return [];
+  }
 }
 
 export async function generateMetadata({

@@ -5,8 +5,6 @@ import { Link } from "@/i18n/routing";
 import Image from "@/components/common/Image";
 import { Calendar, ArrowRight } from "lucide-react";
 
-export const dynamic = "force-dynamic";
-
 export const metadata: Metadata = {
   title: "Мэдээ | GER GROUP",
   description: "Шилэн фасад, хөнгөн цагаан хийцийн шинэ технологи, төслийн тайлан.",

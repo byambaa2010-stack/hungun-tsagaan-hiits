@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslations } from "next-intl";
-import { Layers, Box, Ruler, Wrench, LayoutGrid, Columns, ArrowUpRight } from "lucide-react";
+import { Layers, Box, Ruler, Wrench, LayoutGrid, Columns, ArrowUpRight, Check, Star } from "lucide-react";
 import Image from "@/components/common/Image";
 import FadeIn from "@/components/motion/FadeIn";
 import StaggerContainer from "@/components/motion/StaggerContainer";
@@ -12,13 +12,16 @@ import { easeOutExpo } from "@/lib/motion";
 
 type Category = "all" | "facade" | "aluminum" | "glass";
 
+type ServiceKey = "facade" | "unitized" | "stick" | "aluminum" | "lowe" | "installation";
+
 const services: {
-  key: "facade" | "unitized" | "stick" | "aluminum" | "lowe" | "installation";
+  key: ServiceKey;
   icon: React.ElementType;
   image: string;
   category: Category;
+  featured?: boolean;
 }[] = [
-  { key: "facade", icon: Layers, image: "/images/service-facade.jpg", category: "facade" },
+  { key: "facade", icon: Layers, image: "/images/gallery-4.jpg", category: "facade", featured: true },
   { key: "unitized", icon: LayoutGrid, image: "/images/service-unitized.jpg", category: "facade" },
   { key: "stick", icon: Columns, image: "/images/service-stick.jpg", category: "facade" },
   { key: "aluminum", icon: Box, image: "/images/service-aluminum.jpg", category: "aluminum" },
@@ -40,6 +43,11 @@ export default function ServicesSection() {
   const filterRef = useRef<HTMLDivElement>(null);
 
   const filtered = active === "all" ? services : services.filter((s) => s.category === active);
+
+  const getFeatures = (key: ServiceKey): string[] => {
+    const raw = t.raw(`items.${key}.features`);
+    return Array.isArray(raw) ? (raw as string[]) : [];
+  };
 
   return (
     <section id="services" className="relative overflow-hidden bg-background px-6 py-28 md:py-36">
@@ -93,6 +101,8 @@ export default function ServicesSection() {
           <AnimatePresence mode="popLayout">
             {filtered.map((service) => {
               const Icon = service.icon;
+              const features = getFeatures(service.key);
+              const isFeatured = service.featured;
               return (
                 <motion.article
                   key={service.key}
@@ -107,15 +117,17 @@ export default function ServicesSection() {
                   }}
                   exit={reduced ? {} : { opacity: 0, scale: 0.96 }}
                   whileHover={reduced ? {} : { y: -10 }}
-                  className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-surface/60 shadow-sm transition-all duration-500 hover:border-accent/30 hover:bg-surface hover:shadow-2xl hover:shadow-accent/5"
+                  className={`group relative flex flex-col overflow-hidden rounded-2xl border bg-surface/60 shadow-sm transition-all duration-500 hover:border-accent/30 hover:bg-surface hover:shadow-2xl hover:shadow-accent/5 ${
+                    isFeatured ? "border-accent/40 ring-1 ring-accent/10 sm:col-span-2 lg:col-span-2" : "border-border"
+                  }`}
                 >
-                  <div className="relative aspect-[16/10] overflow-hidden">
+                  <div className={`relative overflow-hidden ${isFeatured ? "aspect-[21/9]" : "aspect-[16/10]"}`}>
                     <Image
                       src={service.image}
                       alt={t(`items.${service.key}.title`)}
                       fill
                       className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      sizes={isFeatured ? "(max-width: 1024px) 100vw, 66vw" : "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/30 to-transparent" />
 
@@ -123,11 +135,18 @@ export default function ServicesSection() {
                       <Icon className="h-5 w-5 text-white" />
                     </div>
 
-                    <div className="absolute right-5 top-5 flex h-8 items-center rounded-full border border-white/20 bg-black/20 px-3 backdrop-blur-md">
+                    <div className="absolute right-5 top-5 flex h-8 items-center gap-1.5 rounded-full border border-white/20 bg-black/20 px-3 backdrop-blur-md">
+                      {isFeatured && <Star className="h-3 w-3 text-yellow-300" />}
                       <span className="font-mono text-xs font-medium text-white/90">
                         {t(`items.${service.key}.num`)}
                       </span>
                     </div>
+
+                    {isFeatured && (
+                      <div className="absolute bottom-5 left-5 rounded-full bg-accent/90 px-3 py-1 text-xs font-medium text-white backdrop-blur-sm">
+                        {t("filters.facade")}
+                      </div>
+                    )}
                   </div>
 
                   <div className="flex flex-1 flex-col p-6 md:p-7">
@@ -142,6 +161,20 @@ export default function ServicesSection() {
                     <p className="flex-1 text-sm leading-relaxed text-muted md:text-base">
                       {t(`items.${service.key}.description`)}
                     </p>
+
+                    {features && Array.isArray(features) && features.length > 0 && (
+                      <ul className="mt-5 grid gap-2 sm:grid-cols-2">
+                        {features.map((feature) => (
+                          <li
+                            key={feature}
+                            className="flex items-start gap-2 text-sm text-muted"
+                          >
+                            <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
+                            <span>{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                   </div>
                 </motion.article>
               );

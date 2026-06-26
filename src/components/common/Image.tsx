@@ -4,11 +4,12 @@ import NextImage, { ImageProps as NextImageProps } from "next/image";
 import { useState } from "react";
 
 const PLACEHOLDER = "/images/placeholder.svg";
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 function getFileUrl(url: string): string {
   if (!url) return "";
   if (url.startsWith("http")) return url;
-  if (url.startsWith("/images/")) return url;
+  if (url.startsWith("/images/")) return `${BASE_PATH}${url}`;
   const endpoint = process.env.NEXT_PUBLIC_ERXES_ENDPOINT || "";
   const apiDomain = endpoint.replace(/\/gateway\/graphql$/, "");
   return apiDomain ? `${apiDomain}/read-file?key=${url}` : url;
